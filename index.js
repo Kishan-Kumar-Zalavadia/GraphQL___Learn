@@ -1,9 +1,12 @@
 const { ApolloServer, gql } = require("apollo-server");
 
 const typeDefs = gql`
+
+  scalar Date
+
   type SkiDay {
     id: ID!
-    date: String!
+    date: Date!
     mountain: String!
     conditions: Conditions
   }
@@ -21,7 +24,7 @@ const typeDefs = gql`
   }
 
   input AddDayInput {
-    date: String!
+    date: Date!
     mountain: String!
     conditions: Conditions
   }
