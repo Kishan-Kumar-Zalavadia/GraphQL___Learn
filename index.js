@@ -8,7 +8,7 @@ const typeDefs = gql`
     conditions: Conditions
   }
 
-  enum Conditions{
+  enum Conditions {
     POWDER
     HEAVY
     ICE
@@ -20,10 +20,16 @@ const typeDefs = gql`
     allDays: [SkiDay!]!
   }
 
-  type Mutation {
-    removeDay(id: ID!): SkiDay!
+  input AddDayInput {
+    date: String!
+    mountain: String!
+    conditions: Conditions
   }
 
+  type Mutation {
+    addDay(input: AddDayInput!): SkiDay
+    removeDay(id: ID!): SkiDay!
+  }
 `;
 
 const server = new ApolloServer({
