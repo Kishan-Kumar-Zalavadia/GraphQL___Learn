@@ -3,10 +3,18 @@ const { ApolloServer, gql, MockList } = require("apollo-server");
 const typeDefs = gql`
   scalar Date
 
+  """
+    An object that describes the characteristics of a ski day
+  """
+
   type SkiDay {
+    "A ski day's unique identifier"
     id: ID!
+    "A date that ski day occurred"
     date: Date!
+    "A location where a ski day occurred"
     mountain: String!
+    "The shape that the snow was in when this ski day happened"
     conditions: Conditions
   }
 
