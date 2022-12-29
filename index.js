@@ -1,14 +1,16 @@
 const { ApolloServer, gql } = require("apollo-server");
 
 const typeDefs = gql`
+    type SkiDay{
+        id: ID!
+        date: String!
+        mountain: String!
+    },
   type Query {
     totalDays: Int!
+    allDays: [SkiDay!]!
   }
 `;
-
-// const resolvers = {
-
-// }
 
 const server = new ApolloServer({
   typeDefs,
