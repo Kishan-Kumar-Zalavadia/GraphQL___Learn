@@ -1,7 +1,6 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, gql, MockList } = require("apollo-server");
 
 const typeDefs = gql`
-
   scalar Date
 
   type SkiDay {
@@ -20,7 +19,7 @@ const typeDefs = gql`
 
   type Query {
     totalDays: Int!
-    allDays: [SkiDay!]!
+    allDays: [SkiDay!]! 
   }
 
   input AddDayInput {
@@ -42,10 +41,17 @@ const typeDefs = gql`
   }
 `;
 
+const mocks = {
+  Date: () => "29/12/2022",
+  String: () => "Thats a cool string",
+//   Query: () => ({
+//     allDays: () => new MockList(8)
+//   })
+};
+
 const server = new ApolloServer({
   typeDefs,
-  // resolvers
-  mocks: true,
+  mocks
 });
 
 server.listen().then(({ url }) => console.log(`Server running at ${url}`));
