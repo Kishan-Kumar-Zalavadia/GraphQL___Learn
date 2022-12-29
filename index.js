@@ -39,6 +39,10 @@ const typeDefs = gql`
     addDay(input: AddDayInput!): SkiDay
     removeDay(id: ID!): RemoveDayPayLoad!
   }
+
+  type Subscription{
+    newDay: SkiDay!
+  }
 `;
 
 const mocks = {
